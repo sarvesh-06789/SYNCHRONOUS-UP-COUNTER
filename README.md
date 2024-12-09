@@ -1,16 +1,20 @@
 ### SYNCHRONOUS-UP-COUNTER
 
-**AIM:**
+NAME:SHARVESHWARAN M
+
+REG NO:24001970
+
+*AIM:*
 
 To implement 4 bit synchronous up counter and validate functionality.
 
-**SOFTWARE REQUIRED:**
+*SOFTWARE REQUIRED:*
 
 Quartus prime
 
-**THEORY**
+*THEORY*
 
-**4 bit synchronous UP Counter**
+*4 bit synchronous UP Counter*
 
 If we enable each J-K flip-flop to toggle based on whether or not all preceding flip-flop outputs (Q) are “high,” we can obtain the same counting sequence as the asynchronous circuit without the ripple effect, since each flip-flop in this circuit will be clocked at exactly the same time:
 
@@ -26,21 +30,33 @@ Since the first (LSB) flip-flop needs to toggle at every clock pulse, its J and 
 The next flip-flop need only “recognize” that the first flip-flop’s Q output is high to be made ready to toggle, so no AND gate is needed.
 However, the remaining flip-flops should be made ready to toggle only when all lower-order output bits are “high,” thus the need for AND gates.
 
-**Procedure**
+*Procedure*
 
 /* write all the steps invloved */
-
-**PROGRAM**
-
+~~~
+*PROGRAM*
+module de11(out,clk,rstn);
+input clk,rstn;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+   if(!rstn)
+     out<=0;
+   else 
+     out <= out+1;
+end
+endmodule
 /* Program for flipflops and verify its truth table in quartus using Verilog programming. 
-
-Developed by: RegisterNumber:
 */
+~~~
+*RTL LOGIC UP COUNTER*
+![Screenshot 2024-12-03 180816](https://github.com/user-attachments/assets/dcdcebed-6fa5-4efe-a290-1a86c5e34ce0)
 
-**RTL LOGIC UP COUNTER**
+*TIMING DIAGRAM FOR IP COUNTER*
+![Screenshot 2024-12-03 181730](https://github.com/user-attachments/assets/94974c70-191d-47c3-9e15-2eabbdf6fa35)
 
-**TIMING DIAGRAM FOR IP COUNTER**
+*TRUTH TABLE*
+![Screenshot 2024-12-03 182332](https://github.com/user-attachments/assets/48bea7a8-2702-4ade-ae8d-4c98e64f1db4)
 
-**TRUTH TABLE**
-
-**RESULTS**
+*RESULTS*
+The 4-bit synchronous up-counter was successfully implemented using Verilog in Quartus Prime. The functionality was validated by simulating the counter, which correctly counted up from 0000 to 1111 in binary, incrementing by 1 on each clock pulse. The synchronous nature of the counter ensured that all flip-flops were clocked simultaneously, with each flip-flop toggling based on the state of the preceding flip-flops. The output sequence followed the expected counting pattern, confirming the correct operation of the 4-bit synchronous up-counter.
